@@ -1,0 +1,9 @@
+app:
+  image: loginchapchap
+  ports:
+    - "86":3000
+
+  environment:
+    - ROOT_URL=http://localhost
+    - 'METEOR_SETTINGS={"DBSQLSERVER_HOST":"10.10.3.65","DBSQLSERVER_PORT":"","DBSQLSERVER_USER":"nsiavie","DBSQLSERVER_PASSWORD":"nsiavie","DBSQLSERVER_DATABASE":"DB_EXTRANET_VIE"}'
+  restart: always
