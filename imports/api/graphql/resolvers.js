@@ -18,7 +18,7 @@ const resolvers={
                 let query=`select top 10 u.LOGIN,u.MOT_DE_PASSE,c.NOM_CLIENT+' '+c.PRENOMS_CLIENT as NOM_COMPLET,c.DATE_NAISSANCE,n.NUMERO_POLICE,c.TELEPHONE from utilisateur u 
                            JOIN CLIENT_UNIQUE c on u.IDE_CLIENT_UNIQUE = c.IDE_CLIENT_UNIQUE 
                            JOIN CONTRATS n on u.IDE_CLIENT_UNIQUE = n.IDE_CLIENT_UNIQUE 
-                           WHERE c.NOM_CLIENT like :nc `;
+                           WHERE c.NOM_CLIENT like :nc and u.ISFIRSTCONNEXION <> 1 `;
 
                            return DBSQLSERVER.query(query,{
                                 replacements:{
@@ -42,7 +42,7 @@ const resolvers={
                 let query=`select top 10 u.LOGIN,u.MOT_DE_PASSE,c.NOM_CLIENT+' '+c.PRENOMS_CLIENT as NOM_COMPLET,c.DATE_NAISSANCE,n.NUMERO_POLICE,c.TELEPHONE from utilisateur u 
                            JOIN CLIENT_UNIQUE c on u.IDE_CLIENT_UNIQUE = c.IDE_CLIENT_UNIQUE 
                            JOIN CONTRATS n on u.IDE_CLIENT_UNIQUE = n.IDE_CLIENT_UNIQUE 
-                           WHERE c.NOM_CLIENT like :nc and c.PRENOMS_CLIENT like :pc`;
+                           WHERE c.NOM_CLIENT like :nc and c.PRENOMS_CLIENT like :pc and u.ISFIRSTCONNEXION <> 1`;
                           
                            return DBSQLSERVER.query(query,{
                                 replacements:{
@@ -67,7 +67,7 @@ const resolvers={
                 let query=`select top 10 u.LOGIN,u.MOT_DE_PASSE,c.NOM_CLIENT+' '+c.PRENOMS_CLIENT as NOM_COMPLET,c.DATE_NAISSANCE,n.NUMERO_POLICE,c.TELEPHONE from utilisateur u 
                             JOIN CLIENT_UNIQUE c on u.IDE_CLIENT_UNIQUE = c.IDE_CLIENT_UNIQUE 
                             JOIN CONTRATS n on u.IDE_CLIENT_UNIQUE = n.IDE_CLIENT_UNIQUE 
-                            WHERE c.NOM_CLIENT like :nc and c.PRENOMS_CLIENT like :pc and c.DATE_NAISSANCE=:dn `;
+                            WHERE c.NOM_CLIENT like :nc and c.PRENOMS_CLIENT like :pc and c.DATE_NAISSANCE=:dn and u.ISFIRSTCONNEXION <> 1 `;
                             
                             return DBSQLSERVER.query(query,{
                                 replacements:{
@@ -93,7 +93,7 @@ const resolvers={
                 let query=`select top 10 u.LOGIN,u.MOT_DE_PASSE,c.NOM_CLIENT+' '+c.PRENOMS_CLIENT as NOM_COMPLET,c.DATE_NAISSANCE,n.NUMERO_POLICE,c.TELEPHONE from utilisateur u 
                             JOIN CLIENT_UNIQUE c on u.IDE_CLIENT_UNIQUE = c.IDE_CLIENT_UNIQUE 
                             JOIN CONTRATS n on u.IDE_CLIENT_UNIQUE = n.IDE_CLIENT_UNIQUE 
-                            WHERE c.NOM_CLIENT like :nc and c.PRENOMS_CLIENT like :pc and c.DATE_NAISSANCE=:dn and n.NUMERO_POLICE=:np`;
+                            WHERE c.NOM_CLIENT like :nc and c.PRENOMS_CLIENT like :pc and c.DATE_NAISSANCE=:dn and n.NUMERO_POLICE=:np and u.ISFIRSTCONNEXION <> 1`;
                             
                             return DBSQLSERVER.query(query,{
                                 replacements:{
